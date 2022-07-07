@@ -1,11 +1,10 @@
 package com.nttdata.bootcoindomain.consumer;
 
-
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
-import java.util.logging.Logger;
 /**
  * KafkaChangeRateConsumer.
  */
@@ -14,7 +13,7 @@ public class KafkaChangeRateConsumer {
   /**
    * Kafka logger.
    */
-  Logger logger = (Logger) LoggerFactory.getLogger(KafkaChangeRateConsumer.class);
+  Logger logger = LoggerFactory.getLogger(KafkaChangeRateConsumer.class);
 
   /**
    * kafkaListener.

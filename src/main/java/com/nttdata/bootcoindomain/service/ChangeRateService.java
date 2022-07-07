@@ -46,6 +46,7 @@ public class ChangeRateService {
     log.info("ChangeRateService update -> ");
     return changeRateRepository.findById(id)
             .switchIfEmpty(Mono.error(new RuntimeException("Change Rate not found")))
+            .flatMap(p -> changeRateRepository.findByName(changeRate.getName())
                     .switchIfEmpty(Mono.defer(() -> changeRateRepository.save(parseIdToChangeRate(changeRate, id))))
                     .flatMap(obj -> {
                       if (obj != null) {
@@ -57,7 +58,7 @@ public class ChangeRateService {
                       } else {
                         return changeRateRepository.save(parseIdToChangeRate(changeRate, id));
                       }
-                    });
+                    }));
   }
   private ChangeRate parseIdToChangeRate(ChangeRate changeRate, String id) {
     changeRate.setId(id);

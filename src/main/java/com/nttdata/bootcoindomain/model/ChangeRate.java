@@ -22,6 +22,8 @@ public class ChangeRate {
   @Id
   private String id;
   @NotNull
+  private String name;
+  @NotNull
   private BigDecimal purchaseRate;
   @NotNull
   private BigDecimal sellingRate;
